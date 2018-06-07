@@ -1226,6 +1226,9 @@ header {
 }
 
 @media (max-width: 991px) {
+  .parallax-header {
+    min-height: unset;
+  }
   .selection-section .video-container .floating-thumb {
     display: none;
   }

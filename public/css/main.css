@@ -993,6 +993,9 @@ header {
     .medway-section .medway-container .floating-thumb img {
       width: 100%; } }
 @media (max-width: 991px) {
+  .parallax-header {
+    min-height: unset; }
+
   .selection-section .video-container .floating-thumb {
     display: none; }
 

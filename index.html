@@ -66,14 +66,14 @@
                     <div class="video">
                         <iframe id="video-iframe" width="560" height="349" src="http://www.youtube.com/embed/n_dZNLr2cME?rel=0&hd=1?autoplay=0&showinfo=0&controls=0" frameborder="0" allowfullscreen></iframe>
                     </div>
-                    <div class="row video-list">
-                        <div class="col video-list-item" src="http://www.youtube.com/embed/n_dZNLr2cME?rel=0&hd=1?autoplay=0&showinfo=0&controls=0">
+                    <div class="row video-list" id="video-list">
+                        <div class="col-4 video-list-item">
                             <img src="" id="video-0" alt="">
                         </div>
-                        <div class="col video-list-item " src="https://www.youtube.com/embed/FcbMDWoyF8c">
+                        <div class="col-4 video-list-item ">
                             <img src="" id="video-1" alt="">
                         </div>
-                        <div class="col video-list-item" src="http://www.youtube.com/embed/n_dZNLr2cME?rel=0&hd=1?autoplay=0&showinfo=0&controls=0">
+                        <div class="col-4 video-list-item">
                             <img src="" id="video-2" alt="">
                         </div>
                     </div>
@@ -247,11 +247,12 @@
                 <p>Seja um campeão, faça parte desse time de vencedores</p>
             </div>
             <div class="row">
-                <form action="">
+                <form action="" method="POST">
                     <input type="text" name="nome" placeholder="Seu nome">
                     <input type="email" name="email" placeholder="Email">
-                    <input type="phone" name="tel" placeholder="Telefone">
-                    <button type="submit">Enviar</button>
+                    <input type="phone" name="telefone" placeholder="Telefone">
+                    <input type="hidden" name="tipo" id="form-type" value="">
+                    <button type="submit" id="form-submit">Enviar</button>
                 </form>
             </div>
         </div>
@@ -271,18 +272,18 @@
                         <li>
                             <div class="head">
                                 <p>#SouJogador</p>
-                                <button class="open-dialog d-none d-lg-block">Faça parte desse time</button>
+                                <button class="open-dialog-player d-none d-lg-block">Faça parte desse time</button>
                             </div>
                             <p>Seja um campeão, faça parte desse time de vencedores</p>
-                            <button class="open-dialog d-block d-lg-none">Faça parte desse time</button>
+                            <button class="open-dialog-player d-block d-lg-none">Faça parte desse time</button>
                         </li>
                         <li>
                             <div class="head">
                                 <p>#SouTécnico</p>
-                                <button class="open-dialog d-none d-lg-block">Escale um jogador agora</button>
+                                <button class="open-dialog-tech d-none d-lg-block">Escale um jogador agora</button>
                             </div>
                             <p>Escale um jogador para nosso time, confiamos em você</p>
-                            <button class=" open-dialogd-block d-lg-none">Escale um jogador agora</button>
+                            <button class=" open-dialog-tech d-block d-lg-none">Escale um jogador agora</button>
                         </li>
                         <li>
                             <div class="head">
@@ -307,9 +308,9 @@
                     <img src="public/img/icons/location.png" alt="Medway - Unid. Particulares">
                 </div>
                 <div class="content">
-                <p><strong>Medway - Unid. Particulares</strong></p>
-                <address>Avenida Epitácio Pessoa, 3627, Miramar.</address>
-                <p>Tel. <a href="tel:8335065672">(83) 3506.5672</a></p>
+                    <p><strong>Medway - Unid. Particulares</strong></p>
+                    <address>Avenida Epitácio Pessoa, 3627, Miramar.</address>
+                    <p>Tel. <a href="tel:8335065672">(83) 3506.5672</a></p>
                 </div>
             </div>
             <div class="col-12 col-lg logo-footer">
@@ -357,16 +358,25 @@
 <script type="text/javascript" src="public/js/carousel/modernizr.js"></script>
 <script type="text/javascript" src="public/js/carousel/jquery.gallery.js"></script>
 <script type="text/javascript">
+    const baseUrl = 'https://api.assessoriacampea.com.br/'
+
     $(function(){
 
-        var videos = ['http://www.youtube.com/embed/n_dZNLr2cME?rel=0&hd=1?autoplay=0', 'https://www.youtube.com/embed/FcbMDWoyF8c', 'http://www.youtube.com/embed/n_dZNLr2cME?rel=0&hd=1?autoplay=0']
+        var videosLoaded;
+        var mainVideo;
 
-        videos.map(function(video, index){
-            $('#video-'+index).attr('src', '//img.youtube.com/vi/'+video.match(/youtube\.com.*(\?v=|\/embed\/)(.{11})/).pop()+'/0.jpg');
+        $.ajax({
+            url : baseUrl+"videos",
+            type : 'get',
+            beforeSend : function(){
+                console.log("ENVIANDO...");
+            }
         })
-
-
-
+            .done(function(msg){
+                videosLoaded = msg
+                mainVideo = videosLoaded.pop()
+                showVideos(mainVideo, videosLoaded)
+            })
 
 
         $('#dg-container').gallery();
@@ -398,6 +408,28 @@
         sr.reveal('.carousel-control-prev', {origin: 'left',distance: '240px',delay: '300'}, 200);
         sr.reveal('.carousel-control-next', {origin: 'right',distance: '240px',delay: '300'}, 200);
         sr.reveal('.download-wallpaper', {origin: 'bottom',distance: '240px',delay: '300'}, 200);
+
+        $('.video-list-item').on('click', function(evt){
+            var aux = mainVideo
+            mainVideo = videosLoaded.splice($(this).index(),1)[0]
+            videosLoaded.splice($(this).index(), 0 ,aux)
+            showVideos(mainVideo, videosLoaded)
+        })
+
+        $('#form-submit').submit(function(e) {
+            e.preventDefault();
+            // get all the inputs into an array.
+            var $inputs = $('#form-submit :input');
+
+            // not sure if you wanted this, but I thought I'd add it.
+            // get an associative array of just the values.
+            var values = {};
+            $inputs.each(function() {
+                console.log($(this).val)
+                values[this.name] = $(this).val();
+            });
+
+        });
 
     });
 
@@ -494,8 +526,14 @@
         $("#message-length").text((180 - $(this).val().length) + ' caracteres');
     });
 
-    $(".open-dialog").on('click', function(){
+    $(".open-dialog-player").on('click', function(){
         $('.player').toggleClass('show');
+        $('#form-type').val('jogador')
+    })
+
+    $(".open-dialog-tech").on('click', function(){
+        $('.player').toggleClass('show');
+        $('#form-type').val('tecnico')
     })
 
     $(".player>.close").on('click', function(){
@@ -558,12 +596,14 @@
         }
     }
 
-    $('.video-list-item').on('click', function(evt){
+    function showVideos(mainVideo, videosLoaded){
+        videosLoaded.map(function(video, index) {
+            $('#video-'+index).attr('src', '//img.youtube.com/vi/'+video.vid_link_youtube.match(/youtube\.com.*(\?v=|\/embed\/)(.{11})/).pop()+'/0.jpg');
+        })
+
         $("#video-iframe")
-            .attr("src",$(this).attr('src'))
-    })
-
-
+            .attr("src",mainVideo.vid_link_youtube)
+    }
 </script>
 </body>
 </html>
