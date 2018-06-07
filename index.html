@@ -151,6 +151,10 @@
                         </ul>
                         <span>Escolha a cor da camisa</span>
                     </div>
+                    <form action="">
+                        <input type="hidden" name="color" value="">
+                        <input type="hidden" name="">
+                    </form>
                 </div>
                 <div class="col-12 col-lg d-none d-lg-flex flex-column justify-content-center align-items-end title-tag-span-content">
                     <p class="title-tag-span custom no-pad"><span>eu faço parte desse time,</span></p>
@@ -247,12 +251,15 @@
                 <p>Seja um campeão, faça parte desse time de vencedores</p>
             </div>
             <div class="row">
-                <form action="" method="POST">
-                    <input type="text" name="nome" placeholder="Seu nome">
-                    <input type="email" name="email" placeholder="Email">
-                    <input type="phone" name="telefone" placeholder="Telefone">
+                <form method="POST" id="form-submit">
+                    <input type="text" name="nome" placeholder="Seu nome" required="true">
+                    <input type="email" name="email" placeholder="Email" required="true">
+                    <input type="phone" name="telefone" placeholder="Telefone" required="true">
                     <input type="hidden" name="tipo" id="form-type" value="">
-                    <button type="submit" id="form-submit">Enviar</button>
+                    <div class="alert alert-success" role="alert" id="form-success">
+                        SUcesso
+                    </div>
+                    <button type="submit">Enviar</button>
                 </form>
             </div>
         </div>
@@ -421,13 +428,24 @@
             // get all the inputs into an array.
             var $inputs = $('#form-submit :input');
 
-            // not sure if you wanted this, but I thought I'd add it.
-            // get an associative array of just the values.
             var values = {};
             $inputs.each(function() {
-                console.log($(this).val)
+                console.log($(this).val())
                 values[this.name] = $(this).val();
             });
+
+            $.ajax({
+                url : baseUrl+"form",
+                type : 'post',
+                data: values,
+                beforeSend : function(){
+                    console.log("ENVIANDO...");
+                }
+            }).done(function(data){
+                $('#form-success').text(data.msg)
+                $('#form-success').addClass('show')
+            })
+
 
         });
 

@@ -941,6 +941,7 @@ header {
       }
     }
     form {
+      transition: .4s;
       input {
         width: 310px;
         height: 50px;
@@ -967,6 +968,17 @@ header {
         font-size: 21px;
         margin-top: 15px;
         cursor: pointer;
+      }
+      .alert-success {
+        height: 0;
+        overflow: hidden;
+        padding: 0;
+        border: 0;
+        transition: .4s;
+      }
+      .show {
+        height: 50px;
+        transition: .4s;
       }
     }
 

@@ -766,32 +766,43 @@ header {
         color: #333753;
         font-size: 16px;
         margin-top: 30px; }
-    .medway-section .player form input {
-      width: 310px;
-      height: 50px;
-      background: #fff160;
-      display: flex;
-      align-items: center;
-      padding-left: 25px;
-      border: none;
-      font-size: 16px;
-      color: #373753;
-      margin: 10px 0; }
-      .medway-section .player form input::placeholder {
-        /* Chrome, Firefox, Opera, Safari 10.1+ */
-        opacity: .8;
-        /* Firefox */ }
-    .medway-section .player form button {
-      background: #333753;
-      outline: none;
-      border: none;
-      width: 155px;
-      height: 55px;
-      color: #fff160;
-      font-style: inherit;
-      font-size: 21px;
-      margin-top: 15px;
-      cursor: pointer; }
+    .medway-section .player form {
+      transition: .4s; }
+      .medway-section .player form input {
+        width: 310px;
+        height: 50px;
+        background: #fff160;
+        display: flex;
+        align-items: center;
+        padding-left: 25px;
+        border: none;
+        font-size: 16px;
+        color: #373753;
+        margin: 10px 0; }
+        .medway-section .player form input::placeholder {
+          /* Chrome, Firefox, Opera, Safari 10.1+ */
+          opacity: .8;
+          /* Firefox */ }
+      .medway-section .player form button {
+        background: #333753;
+        outline: none;
+        border: none;
+        width: 155px;
+        height: 55px;
+        color: #fff160;
+        font-style: inherit;
+        font-size: 21px;
+        margin-top: 15px;
+        cursor: pointer; }
+      .medway-section .player form .alert-success {
+        height: 0;
+        overflow: hidden;
+        padding: 0;
+        border: 0;
+        transition: .4s; }
+      .medway-section .player form .show {
+        height: 50px;
+        transition: .4s; }
     .medway-section .player p.warning {
       width: 415px;
       text-align: center; }
