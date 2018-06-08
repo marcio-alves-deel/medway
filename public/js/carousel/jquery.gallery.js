@@ -103,6 +103,7 @@
 					'-o-transform'		: 'translateX(-56%) translateZ(-65px)',
 					'-ms-transform'		: 'translateX(-56%) translateZ(-65px)',
 					'transform'			: 'translateX(-56%) translateZ(-65px)',
+                    'transition': '.4s',
 				};
 				
 				rightCSS	= {
@@ -111,6 +112,7 @@
 					'-o-transform'		: 'translateX(56%) translateZ(-65px)',
 					'-ms-transform'		: 'translateX(56%) translateZ(-65px)',
 					'transform'			: 'translateX(56%) translateZ(-65px)',
+                    'transition': '.4s',
 				};
 				
 				leftCSS.opacity		= 1;
@@ -126,7 +128,8 @@
 					'-moz-transform'	: 'translate(-56%) scale(0.8)',
 					'-o-transform'		: 'translate(-56%) scale(0.8)',
 					'-ms-transform'		: 'translate(-56%) scale(0.8)',
-					'transform'			: 'translate(-56%) scale(0.8)'
+                    'transform': 'translate(-56%) scale(0.8)',
+                    'transition': '.4s',
 				};
 				
 				rightCSS	= {
@@ -134,7 +137,8 @@
 					'-moz-transform'	: 'translate(56%) scale(0.8)',
 					'-o-transform'		: 'translate(56%) scale(0.8)',
 					'-ms-transform'		: 'translate(56%) scale(0.8)',
-					'transform'			: 'translate(56%) scale(0.8)'
+                    'transform': 'translate(56%) scale(0.8)',
+                    'transition': '.4s',
 				};
 				
 				currentCSS	= {
@@ -240,7 +244,8 @@
 							'-ms-transform'		: 'translateX(-56%) translateZ(-65px)',
 							'transform'			: 'translateX(-56%) translateZ(-65px)',
 							'opacity'			: 0,
-							'visibility'		: 'hidden'
+                            'visibility': 'hidden',
+                            'transition': '.4s',
 						};
 						break;
 					case 'outright':
@@ -251,7 +256,8 @@
 							'-ms-transform'		: 'translateX(56%) translateZ(-65px)',
 							'transform'			: 'translateX(56%) translateZ(-65px)',
 							'opacity'			: 0,
-							'visibility'		: 'hidden'
+                            'visibility': 'hidden',
+                            'transition': '.4s',
 						};
 						break;
 					case 'left':
@@ -262,7 +268,8 @@
 							'-ms-transform'		: 'translateX(-56%) translateZ(-65px)',
 							'transform'			: 'translateX(-56%) translateZ(-65px)',
 							'opacity'			: 1,
-							'visibility'		: 'visible'
+                            'visibility': 'visible',
+                            'transition': '.4s',
 						};
 						break;
 					case 'right':
@@ -284,12 +291,12 @@
 							'-ms-transform'		: 'translateX(0px) translateZ(0px)',
 							'transform'			: 'translateX(0px) translateZ(0px)',
 							'opacity'			: 1,
-							'visibility'		: 'visible'
+                            'visibility': 'visible',
+                            'transition': '.4s',
 						};
 						break;
-				};
-			
-			}
+                }
+            }
 			else if( this.support2d && this.supportTrans ) {
 			
 				switch( position ) {
@@ -301,7 +308,8 @@
 							'-ms-transform'		: 'translate(-56%) scale(0.7)',
 							'transform'			: 'translate(-56%) scale(0.7)',
 							'opacity'			: 0,
-							'visibility'		: 'hidden'
+                            'visibility': 'hidden',
+                            'transition': '.4s',
 						};
 						break;
 					case 'outright':
@@ -312,7 +320,8 @@
 							'-ms-transform'		: 'translate(56%) scale(0.7)',
 							'transform'			: 'translate(56%) scale(0.7)',
 							'opacity'			: 0,
-							'visibility'		: 'hidden'
+                            'visibility': 'hidden',
+                            'transition': '.4s',
 						};
 						break;
 					case 'left':
@@ -323,7 +332,8 @@
 							'-ms-transform'		: 'translate(-56%) scale(0.8)',
 							'transform'			: 'translate(-56%) scale(0.8)',
 							'opacity'			: 1,
-							'visibility'		: 'visible'
+                            'visibility': 'visible',
+                            'transition': '.4s',
 						};
 						break;
 					case 'right':
@@ -334,7 +344,8 @@
 							'-ms-transform'		: 'translate(56%) scale(0.8)',
 							'transform'			: 'translate(56%) scale(0.8)',
 							'opacity'			: 1,
-							'visibility'		: 'visible'
+                            'visibility': 'visible',
+                            'transition': '.4s',
 						};
 						break;
 					case 'center':
@@ -345,12 +356,12 @@
 							'-ms-transform'		: 'translate(0px) scale(1)',
 							'transform'			: 'translate(0px) scale(1)',
 							'opacity'			: 1,
-							'visibility'		: 'visible'
+                            'visibility': 'visible',
+                            'transition': '.4s',
 						};
 						break;
-				};
-			
-			}
+                }
+            }
 			else {
 			
 				switch( position ) {
@@ -360,18 +371,19 @@
 					case 'right'	:
 						return {
 							'opacity'			: 0,
-							'visibility'		: 'hidden'
+                            'visibility': 'hidden',
+                            'transition': '.4s',
 						};
 						break;
 					case 'center'	:
 						return {
 							'opacity'			: 1,
-							'visibility'		: 'visible'
+                            'visibility': 'visible',
+                            'transition': '.4s',
 						};
 						break;
-				};
-			
-			}
+                }
+            }
 		
 		},
 		_navigate			: function( dir ) {
@@ -435,11 +447,11 @@
 						this.$rightItm.addClass('dg-transition').css( this._getCoordinates('left') );
 					
 					}
-					break;	
-					
-			};
-			
-			this._setItems();
+                    break;
+
+
+            }
+            this._setItems();
 			
 			if( !this.supportTrans )
 				this.$currentItm.addClass('dg-center');

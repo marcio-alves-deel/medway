@@ -64,7 +64,9 @@
                 </div>
                 <div class="col-lg-7 video-boundary">
                     <div class="video">
-                        <iframe id="video-iframe" width="560" height="349" src="http://www.youtube.com/embed/n_dZNLr2cME?rel=0&hd=1?autoplay=0&showinfo=0&controls=0" frameborder="0" allowfullscreen></iframe>
+                        <iframe id="video-iframe" width="560" height="349"
+                                src="https://www.youtube.com/embed/n_dZNLr2cME?rel=0&hd=1?autoplay=0&showinfo=0&controls=0"
+                                frameborder="0" allowfullscreen></iframe>
                     </div>
                     <div class="row video-list" id="video-list">
                         <div class="col-4 video-list-item">
@@ -88,6 +90,17 @@
         <div class="row d-flex justify-content-center title-tag-span-content">
             <p class="title-tag-span"><span>Vista seu celular</span></p>
             <p class="title-tag-span edited"><span>Com as nossas cores<small>Baixe o wallpaper que mais combina com você torça junto com a gente</small></span></p>
+        </div>
+        <div class="wallpaper-modal d-flex justify-content-center align-items-center">
+            <div class="thumb-share">
+                <img src="" alt="">
+            </div>
+            <div class="facebook-share">
+
+            </div>
+            <div class="download">
+                <a href="" download="assessoria-campea-medway">ou Baixe e compartilhe em suas redes sociais</a>
+            </div>
         </div>
         <div id="carouselWallpaper" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner ">
@@ -129,17 +142,18 @@
                         <li>Digite seu nome</li>
                         <li>Escolha um numero</li>
                     </ul>
-                    <button class="d-none d-lg-flex shirt-button">Compartilhe em suas redes</button>
+                    <button class="d-none d-lg-flex shirt-button" onclick="submitShirt()">Compartilhe em suas redes
+                    </button>
                 </div>
                 <div class="col-12 col-lg shirt-visualization">
                     <div class="shirt-thumb">
                         <img class="w-100" id="shirt-thumb" src="public/img/camisa-azul.png" alt="">
-                        <span id="number" class="number blue">10</span>
+                        <span id="number" class="number blue">00</span>
                         <input  type="number" class="number-input border-blue" id="number-input" min="1" max="99">
                         <button class="number-confirm " id="number-confirm">Confirmar</button>
 
 
-                        <span id="name" class="name blue">NOME</span>
+                        <span id="name" class="name blue">DIGITE SEU NOME</span>
                         <input  type="text" class="name-input border-blue" id="name-input">
                         <button class="name-confirm" id="name-confirm">Confirmar</button>
                     </div>
@@ -152,15 +166,14 @@
                         <span>Escolha a cor da camisa</span>
                     </div>
                     <form action="">
-                        <input type="hidden" name="color" value="">
-                        <input type="hidden" name="">
+                        <input type="hidden" name="color" id="color" value="">
                     </form>
                 </div>
                 <div class="col-12 col-lg d-none d-lg-flex flex-column justify-content-center align-items-end title-tag-span-content">
                     <p class="title-tag-span custom no-pad"><span>eu faço parte desse time,</span></p>
                     <span class="title-tag-span float-right reverse no-pad">e você?</span>
                 </div>
-                <button class="d-flex d-lg-none shirt-button">Compartilhe em suas redes</button>
+                <button class="d-flex d-lg-none shirt-button" onclick="submitShirt()">Compartilhe em suas redes</button>
             </div>
         </div>
     </div>
@@ -180,25 +193,29 @@
                     <div class="row">
                         <button class="login-button"><img src="public/img/icons/instagram.png" alt=""><p>Faça seu login pelo <span>instagram</span></p></button>
                         <button class="login-button"><img src="public/img/icons/instagram.png" alt=""><p>Faça seu login pelo <span>facebook</span></p></button>
+                        <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+                        </fb:login-button>
                     </div>
                 </div>
 
                 <div class="message d-flex flex-column">
                     <div class="message-card">
                         <div class="thumb">
-                            <img src="public/img/avatar-thumb.png" alt="">
+                            <img id="message-thumb" src="" alt="">
                         </div>
                         <div class="content">
                             <div class="social">
-                                <span class="social-name">@RamonFofão</span>
+                                <span class="social-name" id="message-user"></span>
                                 <div class="message-length" id="message-length">
                                     180 caracteres
                                 </div>
                             </div>
-                            <textarea id="message-area" name="message" id="" placeholder="Digite aqui sua mensagem">
-                            </textarea>
+                            <textarea id="message-area" name="message"
+                                      placeholder="Digite aqui sua mensagem"></textarea>
+                            <input type="hidden" id="message-mail">
+                            <input type="hidden" id="facebook-id">
 
-                            <button >Enviar Mensagem</button>
+                            <button id="send-message">Enviar Mensagem</button>
                         </div>
                     </div>
                 </div>
@@ -206,25 +223,10 @@
                 <div class="message-box">
                     <span class="message-title">feed de mensagens</span>
                     <div class="message-box-content">
-                        <ul>
-                            <li class="message-card">
-                                <div class="thumb">
-                                    <img src="public/img/avatar-thumb.png" alt="">
-                                </div>
-                                <div class="content">
-                                    <div class="social">
-                                        <span class="social-name">@RamonFofão</span>
-                                        <div class="social-like">
-                                            <img src="public/img/icons/like.png" alt="">Curta!
-                                        </div>
-                                    </div>
-                                    <p>
-                                        Tenho a certeza que você já é um vencedor. Mantenha o foco e a determinação que você irá muito longe na sua vida pois o seu esforço é visto por todos como um exemplo motivador show
-                                    </p>
-                                </div>
-                            </li>
+                        <button onclick="onLogout()">Logout</button>
+                        <ul id="message-list">
                         </ul>
-                        <button class="message-button">Envie uma mensagem</button>
+                        <button class="message-button" onclick="checkSession();">Envie uma mensagem</button>
                     </div>
                 </div>
             </div>
@@ -254,7 +256,7 @@
                 <form method="POST" id="form-submit">
                     <input type="text" name="nome" placeholder="Seu nome" required="true">
                     <input type="email" name="email" placeholder="Email" required="true">
-                    <input type="phone" name="telefone" placeholder="Telefone" required="true">
+                    <input type="tel" name="telefone" placeholder="Telefone" required="true">
                     <input type="hidden" name="tipo" id="form-type" value="">
                     <div class="alert alert-success" role="alert" id="form-success">
                         SUcesso
@@ -364,8 +366,90 @@
 <!--Carousel Imports-->
 <script type="text/javascript" src="public/js/carousel/modernizr.js"></script>
 <script type="text/javascript" src="public/js/carousel/jquery.gallery.js"></script>
+
+<script>
+
+
+    function checkSession() {
+
+        FB.getLoginStatus(function (response) {
+            statusChangeCallback(response)
+        });
+
+        // $('.login').removeClass('show');
+        // $('.message').toggleClass('show');
+        //
+        // $('.login').toggleClass('show');
+    }
+
+    // This is called with the results from from FB.getLoginStatus().
+    function statusChangeCallback(response) {
+
+        if (response.status === 'connected') {
+            $('.login').removeClass('show');
+            $('.message').toggleClass('show');
+            FB.api('/me?fields=id,name,email,picture', function (response) {
+                $('#message-thumb').attr('src', response.picture.data.url);
+                $('#message-user').text(response.name);
+                $('#message-mail').val(response.email);
+                $('#facebook-id').val(response.id)
+            })
+        } else {
+            $('.login').toggleClass('show');
+        }
+    }
+
+    // This function is called when someone finishes with the Login
+    // Button.  See the onlogin handler attached to it in the sample
+    // code below.
+    function checkLoginState() {
+        FB.getLoginStatus(function (response) {
+            statusChangeCallback(response);
+        });
+    }
+
+    window.fbAsyncInit = function () {
+        FB.init({
+            appId: '146316342893200',
+            cookie: true,  // enable cookies to allow the server to access
+                           // the session
+            xfbml: true,  // parse social plugins on this page
+            version: 'v3.0' // use graph api version 2.8
+        });
+
+    };
+
+    // Load the SDK asynchronously
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+    // Here we run a very simple test of the Graph API after login is
+    // successful.  See statusChangeCallback() for when this call is made.
+
+    const util = require('util');
+
+
+    function onLogout() {
+        FB.getLoginStatus(function (response) {
+            if (response.status === 'connected') {
+                FB.logout(function (response) {
+                    $('.login').removeClass('show');
+                    $('.message').removeClass('show');
+                });
+            }
+        })
+    }
+
+</script>
+
 <script type="text/javascript">
-    const baseUrl = 'https://api.assessoriacampea.com.br/'
+    const baseUrl = 'https://api.assessoriacampea.com.br/';
 
     $(function(){
 
@@ -380,17 +464,18 @@
             }
         })
             .done(function(msg){
-                videosLoaded = msg
-                mainVideo = videosLoaded.pop()
+                videosLoaded = msg;
+                mainVideo = videosLoaded.pop();
                 showVideos(mainVideo, videosLoaded)
-            })
+            });
 
+        loadComments();
 
         $('#dg-container').gallery();
         window.sr = ScrollReveal({ duration: 500 });
 
-        var shirtContent = $('.explanation>.title')
-        var shirtContentLi = $('.explanation>ul>li')
+        var shirtContent = $('.explanation>.title');
+        var shirtContentLi = $('.explanation>ul>li');
 
         sr.reveal('.copy-box');
         sr.reveal('.title-tag-span-content', {origin: 'top', reset: false,});
@@ -417,11 +502,11 @@
         sr.reveal('.download-wallpaper', {origin: 'bottom',distance: '240px',delay: '300'}, 200);
 
         $('.video-list-item').on('click', function(evt){
-            var aux = mainVideo
-            mainVideo = videosLoaded.splice($(this).index(),1)[0]
-            videosLoaded.splice($(this).index(), 0 ,aux)
+            var aux = mainVideo;
+            mainVideo = videosLoaded.splice($(this).index(), 1)[0];
+            videosLoaded.splice($(this).index(), 0, aux);
             showVideos(mainVideo, videosLoaded)
-        })
+        });
 
         $('#form-submit').submit(function(e) {
             e.preventDefault();
@@ -438,11 +523,12 @@
                 type : 'post',
                 data: values,
             }).done(function(data){
-                $('#form-success').text(data.msg)
-                $('#form-success').addClass('show')
+                $('#form-success').text(data.msg);
+                $('#form-success').addClass('show');
                 $('#form-submit').each(function () {
                     this.reset();
                 });
+
             })
 
 
@@ -450,94 +536,96 @@
 
     });
 
+
     $('.thumb-controller-opt').on('click', function(){
 
         var type = this.type;
-        var colors = ['blue', 'white', 'yellow']
-        var borders = ['border-blue', 'border-white', 'border-yellow']
+        var colors = ['blue', 'white', 'yellow'];
+        var borders = ['border-blue', 'border-white', 'border-yellow'];
 
 
         if($($('#name-input')).is(":visible")){
             $('#name-input').fadeOut(400, function () {
-                $('#name-input').removeClass('border-blue').removeClass('border-white').removeClass('border-yellow')
-                $('#name-input').addClass(borders[type])
+                $('#name-input').removeClass('border-blue').removeClass('border-white').removeClass('border-yellow');
+                $('#name-input').addClass(borders[type]);
                 $(this).fadeIn(400)
             })
         }else{
-            $('#name-input').removeClass('border-blue').removeClass('border-white').removeClass('border-yellow')
+            $('#name-input').removeClass('border-blue').removeClass('border-white').removeClass('border-yellow');
             $('#name-input').addClass(borders[type])
         }
 
 
         if($($('#name')).is(":visible")){
             $('#name').fadeOut(400, function () {
-                $('#name').removeClass('blue').removeClass('white').removeClass('yellow')
-                $('#name').addClass(colors[type])
+                $('#name').removeClass('blue').removeClass('white').removeClass('yellow');
+                $('#name').addClass(colors[type]);
                 $(this).fadeIn(400)
             })
         }else{
-            $('#name').removeClass('blue').removeClass('white').removeClass('yellow')
+            $('#name').removeClass('blue').removeClass('white').removeClass('yellow');
             $('#name').addClass(colors[type])
         }
 
         $("#shirt-thumb").fadeOut(400, function () {
-            var shirts = ['camisa-azul.png', 'camisa-branca.png', 'camisa-amarela.png']
-            var imgPath = 'public/img/'
+            var shirts = ['camisa-azul.png', 'camisa-branca.png', 'camisa-amarela.png'];
+            var imgPath = 'public/img/';
             $(this).attr('src', imgPath + shirts[type]).fadeIn(400);
         });
 
         $("#number").fadeOut(400, function () {
-            $('#number').removeClass('blue').removeClass('white').removeClass('yellow')
-            $('#number').addClass(colors[type])
+            $('#number').removeClass('blue').removeClass('white').removeClass('yellow');
+            $('#number').addClass(colors[type]);
             $(this).fadeIn(400)
-        })
+        });
 
-        $('.thumb-controller>ul>li').removeClass('selected')
-        this.classList.add('selected')
-    })
+        $('.thumb-controller>ul>li').removeClass('selected');
+        this.classList.add('selected');
+        $('#color').val(type)
+    });
 
     $('#name').on('click', function(){
-        $('#name-input').val($('#name').text())
-        $(this).fadeOut(400)
-        $('#name-input').fadeIn(400)
+        $('#name-input').val($('#name').text());
+        $(this).fadeOut(400);
+        $('#name-input').fadeIn(400);
         $('#name-confirm').fadeIn(400)
-    })
+    });
 
     $('#number').on('click', function(){
-        $('#number-input').val($('#number').text())
-        $(this).fadeOut(400)
-        $('#number-input').fadeIn(400)
+        $('#number-input').val($('#number').text());
+        $(this).fadeOut(400);
+        $('#number-input').fadeIn(400);
         $('#number-confirm').fadeIn(400)
-    })
+    });
 
     $('#name-input').on('change', function(){
         $('#name').html(this.value)
-    })
+    });
 
     $('#number-input').on('change', function(){
         $('#number').html(this.value)
-    })
+    });
 
     $('#name-confirm').on('click', function(){
-        var text = $('#name-input').value
-        $('#name-input').fadeOut(400)
-        $('#name').html(text).fadeIn(400)
+        var text = $('#name-input').value;
+        $('#name-input').fadeOut(400);
+        $('#name').html(text).fadeIn(400);
         $(this).fadeOut(400)
-    })
+    });
 
     $('#number-confirm').on('click', function(){
-        var text = $('#number-input').value
-        $('#number-input').fadeOut(400)
-        $('#number').html(text).fadeIn(400)
+        var text = $('#number-input').value;
+        $('#number-input').fadeOut(400);
+        $('#number').html(text).fadeIn(400);
         $(this).fadeOut(400)
-    })
+    });
 
     document.querySelector("#number-input").addEventListener("keydown", function (evt) {
         if (evt.which != 8 && evt.which != 0 && ((evt.which < 48 || evt.which > 57) && ((evt.which < 96) || (evt.which > 105))) )
         {
             evt.preventDefault();
         }
-    })
+    });
 
     $("#message-area").keyup(function(){
         $("#message-length").text((180 - $(this).val().length) + ' caracteres');
@@ -545,31 +633,49 @@
 
     $(".open-dialog-player").on('click', function(){
         $('.player').toggleClass('show');
-        $('#form-type').val('jogador')
+        $('#form-type').val('jogador');
         $('#form-type-label').text('#SouJogador')
-    })
+
+    });
 
     $(".open-dialog-tech").on('click', function(){
         $('.player').toggleClass('show');
-        $('#form-type').val('tecnico')
+        $('#form-type').val('tecnico');
         $('#form-type-label').text('#SouTécnico')
-    })
+    });
 
     $(".player>.close").on('click', function(){
         $('.player').toggleClass('show');
-    })
+        $('#form-success').removeClass('show')
+    });
 
-    $(".message-button").on('click', function(){
-        $('.login   ').toggleClass('show');
-    })
-
-    $(".login").on('click', function(){
-        $('.login').removeClass('show');
-        $('.message').toggleClass('show');
-    })
     $('.carousel').carousel({
         interval: false
     });
+
+    $('#send-message').on('click', function () {
+        var data = {
+            facebook_id: $('#facebook-id').val(),
+            email: $('#message-mail').val(),
+            nome: $('#message-thumb').attr('src'),
+            imagem: $('#message-user').text(),
+            texto: $('#message-area').val()
+        };
+
+        $.ajax({
+            url: baseUrl + "comentarios",
+            type: 'post',
+            data: data,
+        }).done(function (data) {
+            console.log('data');
+            $('#form-success').text(data.msg);
+            $('#form-success').addClass('show');
+            $('#message-area').empty();
+
+        })
+
+    });
+
 
     if (window.addEventListener) window.addEventListener('DOMMouseScroll', wheel, false);
     window.onmousewheel = document.onmousewheel = wheel;
@@ -618,10 +724,66 @@
     function showVideos(mainVideo, videosLoaded){
         videosLoaded.map(function(video, index) {
             $('#video-'+index).attr('src', '//img.youtube.com/vi/'+video.vid_link_youtube.match(/youtube\.com.*(\?v=|\/embed\/)(.{11})/).pop()+'/0.jpg');
-        })
+        });
 
         $("#video-iframe")
             .attr("src",mainVideo.vid_link_youtube)
+    }
+
+    function loadComments() {
+        $.ajax({
+            url: baseUrl + "comentarios",
+            type: 'get',
+        })
+            .done(function (data) {
+                var content = '';
+                data.map(function (comment) {
+
+                    content += '<li class="message-card">\n' +
+                        '           <div class="thumb">\n' +
+                        '               <img src="' +
+                        baseUrl + '/imagens/' + comment.com_imagem +
+                        '" alt="">\n' +
+                        '           </div>\n' +
+                        '           <div class="content">\n' +
+                        '               <div class="social">\n' +
+                        '                   <span class="social-name">' +
+                        comment.com_nome +
+                        '                   </span>\n' +
+                        '                   <div class="social-like">\n' +
+                        '                       <img src="public/img/icons/like.png"' +
+                        '                       alt="">Curta!\n' +
+                        '                   </div>\n' +
+                        '               </div>\n' +
+                        '               <p>\n' +
+                        comment.com_texto +
+                        '               </p>\n' +
+                        '           </div>\n' +
+                        '       </li>'
+
+                });
+                $('#message-list').append(content)
+            })
+    }
+
+    function submitShirt() {
+        var cor = ['azul', 'branca', 'amarela'];
+        var data = {
+            numero: $('#number-input').val(),
+            nome: $('#name-input').val(),
+            cor: cor[$('#color').val()],
+        };
+
+        $.ajax({
+            url: baseUrl + "camisas",
+            type: 'post',
+            data: data,
+        }).done(function (data) {
+            console.log(data)
+
+        });
+
+        console.log(data)
     }
 </script>
 </body>

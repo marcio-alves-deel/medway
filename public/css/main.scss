@@ -315,19 +315,20 @@ header {
         position: absolute;
         left: 50%;
         transform: translateX(-53%);
-        top: 20%;
+        top: 27%;
         font-size: 140px;
         font-weight: 800;
         font-family: 'Bebas Neue';
         display: block;
         text-align: center;
+        line-height: 1;
       }
       .name {
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
         top: 15%;
-        font-size: 24px;
+        font-size: 18px;
         font-weight: 800;
         text-transform: uppercase;
       }
@@ -343,7 +344,7 @@ header {
         left: 50%;
         transform: translateX(-50%);
         width: 140px;
-        font-size: 24px;
+        font-size: 18px;
         text-transform: uppercase;
         font-weight: 800;
         color: rgb(254,225,4);
@@ -357,7 +358,7 @@ header {
         border-right-style: none;
         border-left-style: none;
         position: absolute;
-        top: 20%;
+        top: 27%;
         left: 50%;
         transform: translateX(-50%);
         width: 140px;
@@ -367,6 +368,7 @@ header {
         font-weight: 800;
         font-family: 'Bebas Neue';
         text-align: center;
+        line-height: 1;
       }
       .name-confirm {
         display: none;
@@ -380,7 +382,7 @@ header {
       .number-confirm {
         display: none;
         position: absolute;
-        top: 70%;
+        top: 55%;
         left: 50%;
         transform: translate(-50%);
         padding: 5px 10px;
@@ -497,6 +499,33 @@ header {
 
     small {
       color: rgb(254,255,4);
+    }
+  }
+
+  .wallpaper-modal {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(23, 24, 35, .9);
+    z-index: 999;
+    display: none !important;
+    .thumb-share {
+      width: 70vw;
+      img {
+        width: 100%;
+      }
+    }
+    .download {
+      a {
+        color: rgb(247, 205, 18);
+        font-size: 4vw;
+        width: 70vw;
+      }
     }
   }
 
@@ -1125,6 +1154,28 @@ header {
   }
 }
 
+.dg-wrapper {
+  img {
+    max-height: 100%;
+  }
+}
+
+@media (min-width: 1199px) {
+
+  .dg-transition {
+    transition: .6s;
+    height: 495px;
+    overflow: hidden;
+    perspective: 1px;
+    img {
+      height: 100%;
+    }
+  }
+  .dg-container .dg-center {
+    margin-top: 0;
+  }
+}
+
 @media (min-width: 1366px) {
   .dg-wrapper span {
     //transform: translateX(20vw) translateZ(-65px);
@@ -1139,6 +1190,7 @@ header {
   .medway-section .medway-container .floating-thumb img {
     width: 130%;
   }
+
 }
 
 @media (min-width: 1024px) and (max-width: 1199px) {
@@ -1148,10 +1200,6 @@ header {
     img {
       max-height: 100%;
     }
-  }
-  .dg-transition {
-    perspective: 300px;
-    height: 430px;
   }
 
   .selection-section {
@@ -1655,19 +1703,60 @@ header {
     height: 10vw;
     font-size: 3vw;
   }
+  .dg-transition {
+    perspective: 1px;
+    max-height: 350px;
+    transition: .6s;
+  }
+
+  .dg-center {
+    overflow: hidden;
+    border-radius: 10px;
+    img {
+      max-height: unset;
+      width: 100%;
+    }
+  }
+  .dg-wrapper span img {
+    width: 100%;
+    max-height: unset;
+  }
+  .carousel-container .main-carousel nav span {
+    width: 7vw;
+    height: 7vw;
+    img {
+      width: 2.5vw;
+    }
+  }
+  .shirt-section .shirt-content .shirt-thumb .name, .shirt-section .shirt-content .shirt-thumb .name-input {
+    font-size: 42px;
+  }
+  .shirt-section .shirt-content button {
+    font-size: 3.5vw !important;
+    padding: 2.5vw 40px !important;
+  }
+  .shirt-section .shirt-content .shirt-thumb .number, .shirt-section .shirt-content .shirt-thumb .number-input {
+    top: 25%;
+    font-size: 270px;
+    line-height: 1;
+  }
+  .shirt-section .shirt-content .shirt-thumb .number-confirm {
+    too: 55%;
+  }
 }
 
 @media (max-width: 767px) {
   .shirt-section .shirt-content .shirt-thumb .name, .shirt-section .shirt-content .shirt-thumb .name-input {
-    top:18%;
+    top: 15%;
     font-size: 35px;
   }
 
   .shirt-section .shirt-content .shirt-thumb .number, .shirt-section .shirt-content .shirt-thumb .number-input {
-    top:21%;
+    top: 25%;
+    line-height: 1;
   }
   .shirt-section .shirt-content .shirt-thumb .number-confirm {
-    top:60%;
+    top: 55%;
   }
   .title-tag-span small {
     top: 14vw;
@@ -1682,23 +1771,29 @@ header {
   .selection-section {
     padding-top: 40vw;
   }
+  .shirt-section .shirt-content .shirt-thumb .name, .shirt-section .shirt-content .shirt-thumb .name-input {
+    font-size: 30px;
+  }
 }
 
 @media (max-width: 575px) {
   .shirt-section .shirt-content .shirt-thumb .name, .shirt-section .shirt-content .shirt-thumb .name-input {
-    font-size: 8vw;
-    top: 25vw;
+    font-size: 5vw;
+    top: 17vw;
   }
   .shirt-section .shirt-content .shirt-thumb .number, .shirt-section .shirt-content .shirt-thumb .number-input {
     font-size: 35vw;
     top: 30vw;
+    line-height: 1;
   }
   .shirt-section .shirt-content .shirt-thumb .number-confirm{
-    top: 85vw;
+    top: 63vw;
   }
   .shirt-section .shirt-content .shirt-thumb .name-confirm {
-    top:40vw;
+    top: 20vw;
   }
+
+
 }
 
 @media (min-width: 768px) and (max-width: 991px){
@@ -1717,21 +1812,6 @@ header {
     font-size: 3.5vw;
   }
 
-  .shirt-section .shirt-content .shirt-thumb .name, .shirt-section .shirt-content .shirt-thumb .name-input {
-    font-size: 60px;
-    top: 17%;
-  }
-
-  .shirt-section .shirt-content .shirt-thumb .name-confirm {
-    top: 26%;
-  }
-  .shirt-section .shirt-content .shirt-thumb .number, .shirt-section .shirt-content .shirt-thumb .number-input {
-    top: 23%;
-    font-size: 250px;
-  }
-  .shirt-section .shirt-content .shirt-thumb .number-confirm {
-    top: 60%;
-  }
   .message-section .messages-row .message-right-box {
     min-height: 120vw;
   }
@@ -1809,6 +1889,24 @@ header {
   }
   .title-tag-span small {
     top: 12vw;
+  }
+
+}
+
+@media (min-width: 992px) and (max-width: 1023px) {
+  .dg-wrapper {
+    perspective: 120px;
+    height: 375px;
+    img {
+      max-height: 100%;
+    }
+  }
+  .dg-transition {
+    overflow: hidden;
+    img {
+      max-height: 100%;
+      height: 100%;
+    }
   }
 
 }
