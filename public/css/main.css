@@ -623,7 +623,7 @@ header {
       transition: .6s;
       transform: translateX(0); }
     .message-section .message-left-box .message-box {
-      width: 40vw;
+        width: 550px;
       padding-top: 260px;
       padding-right: 10%; }
       .message-section .message-left-box .message-box .message-title {
@@ -669,9 +669,9 @@ header {
           font-weight: 400;
           line-height: 1.5; }
       .message-section .message-left-box .message-box .message-box-content button {
-        font-weight: 600;
+          font-weight: normal;
         margin-left: 95px;
-        font-size: 14px;
+          font-size: 18px;
         font-style: italic;
         padding: 15px 40px;
         background: #fee104;
@@ -757,15 +757,19 @@ header {
       display: flex;
       flex-direction: column;
       z-index: 9; }
-      .medway-section .player .title .title-tag-span {
-        margin-top: 0;
-        display: table;
-        text-transform: none; }
       .medway-section .player .title p {
         display: block;
         color: #333753;
         font-size: 16px;
         margin-top: 30px; }
+
+.medway-section .player .title .title-tag-span {
+    margin-top: 0;
+    display: table;
+    text-transform: none;
+    font-size: 36px;
+    color: #fee104;
+}
     .medway-section .player form {
       transition: .4s; }
       .medway-section .player form input {
@@ -799,10 +803,21 @@ header {
         overflow: hidden;
         padding: 0;
         border: 0;
-        transition: .4s; }
+          transition: .4s;
+          border: none;
+          border-radius: 0;
+          background: #7fd943;
+          display: flex;
+          align-items: center;
+          padding-left: 25px;
+          font-size: 3vw;
+          color: #333753;
+      }
       .medway-section .player form .show {
         height: 50px;
-        transition: .4s; }
+          transition: .4s;
+          margin-top: 10vw;
+      }
     .medway-section .player p.warning {
       width: 415px;
       text-align: center; }
@@ -1339,7 +1354,56 @@ header {
     font-size: 4vw; }
 
   .medway-section .medway-container ul li p {
-    font-size: 3.5vw; } }
+      font-size: 3.5vw;
+  }
+
+    .medway-section .player {
+        align-items: center;
+    }
+
+    .medway-section .player .title {
+        width: 80vw;
+    }
+
+    .medway-section .player form input {
+        width: 50vw;
+    }
+
+    .medway-section .player {
+        padding: 0;
+        align-items: center;
+        padding-top: 100px;
+    }
+
+    .title-tag-span {
+        margin-top: 15vw;
+    }
+
+    .medway-section .player .title .title-tag-span {
+        font-size: 9vw;
+    }
+
+    .medway-section .player form input {
+        width: 80vw;
+        height: 8vw;
+        font-size: 2vw;
+        margin: 2vw 0;
+    }
+
+    .medway-section .player .title p {
+        font-size: 3vw;
+        margin-top: 25px;
+    }
+
+    .medway-section .player form {
+        margin-top: 10vw;
+    }
+
+    .medway-section .player form input {
+        height: 10vw;
+        font-size: 3vw;
+    }
+}
 @media (max-width: 767px) {
   .shirt-section .shirt-content .shirt-thumb .name, .shirt-section .shirt-content .shirt-thumb .name-input {
     top: 18%;

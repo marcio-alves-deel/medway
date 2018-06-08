@@ -247,7 +247,7 @@
         <div class="player d-flex flex-column">
             <span class="close">X</span>
             <div class="row d-flex justify-content-center title title-tag-span-content">
-                <p class="title-tag-span reverse"><span>#SouJogador</span></p>
+                <p class="title-tag-span reverse"><span id="form-type-label">#SouJogador</span></p>
                 <p>Seja um campeão, faça parte desse time de vencedores</p>
             </div>
             <div class="row">
@@ -430,7 +430,6 @@
 
             var values = {};
             $inputs.each(function() {
-                console.log($(this).val())
                 values[this.name] = $(this).val();
             });
 
@@ -438,12 +437,12 @@
                 url : baseUrl+"form",
                 type : 'post',
                 data: values,
-                beforeSend : function(){
-                    console.log("ENVIANDO...");
-                }
             }).done(function(data){
                 $('#form-success').text(data.msg)
                 $('#form-success').addClass('show')
+                $('#form-submit').each(function () {
+                    this.reset();
+                });
             })
 
 
@@ -547,11 +546,13 @@
     $(".open-dialog-player").on('click', function(){
         $('.player').toggleClass('show');
         $('#form-type').val('jogador')
+        $('#form-type-label').text('#SouJogador')
     })
 
     $(".open-dialog-tech").on('click', function(){
         $('.player').toggleClass('show');
         $('#form-type').val('tecnico')
+        $('#form-type-label').text('#SouTécnico')
     })
 
     $(".player>.close").on('click', function(){

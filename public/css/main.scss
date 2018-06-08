@@ -762,7 +762,7 @@ header {
     }
 
     .message-box {
-      width: 40vw;
+      width: 550px;
       padding-top: 260px;
       padding-right: 10%;
       .message-title {
@@ -822,9 +822,9 @@ header {
           }
         }
         button {
-          font-weight: 600;
+          font-weight: normal;
           margin-left: 95px;
-          font-size: 14px;
+          font-size: 18px;
           font-style: italic;
           padding: 15px 40px;
           background: rgb(254, 225, 4);
@@ -894,7 +894,7 @@ header {
     top: 0;
     bottom: 0;
     right: 0;
-    background: #fee104;
+    background: rgb(254, 225, 4);
     color: white;
     font-size: 18px;
     font-weight: normal;
@@ -927,17 +927,18 @@ header {
       display: flex;
       flex-direction: column;
       z-index: 9;
-      .title-tag-span {
-        margin-top: 0;
-        display: table;
-        text-transform: none;
-
-      }
       p {
         display: block;
         color: rgb(51, 55, 83);
         font-size: 16px;
         margin-top: 30px;
+      }
+      .title-tag-span {
+        margin-top: 0;
+        display: table;
+        text-transform: none;
+        font-size: 36px;
+        color: rgb(254, 225, 4);
       }
     }
     form {
@@ -975,10 +976,19 @@ header {
         padding: 0;
         border: 0;
         transition: .4s;
+        border: none;
+        border-radius: 0;
+        background: rgb(127, 217, 67);
+        display: flex;
+        align-items: center;
+        padding-left: 25px;
+        font-size: 3vw;
+        color: rgb(51, 55, 83);
       }
       .show {
         height: 50px;
         transition: .4s;
+        margin-top: 10vw;
       }
     }
 
@@ -1605,6 +1615,45 @@ header {
   }
   .medway-section .medway-container ul li p {
     font-size: 3.5vw;
+  }
+  .medway-section .player {
+    align-items: center;
+  }
+  .medway-section .player .title {
+    width: 80vw;
+  }
+  .medway-section .player form input {
+    width: 50vw;
+  }
+
+  .medway-section .player {
+    padding: 0;
+    align-items: center;
+    padding-top: 100px;
+  }
+
+  .title-tag-span {
+    margin-top: 15vw;
+  }
+  .medway-section .player .title .title-tag-span {
+    font-size: 9vw;
+  }
+  .medway-section .player form input {
+    width: 80vw;
+    height: 8vw;
+    font-size: 2vw;
+    margin: 2vw 0;
+  }
+  .medway-section .player .title p {
+    font-size: 3vw;
+    margin-top: 25px;
+  }
+  .medway-section .player form {
+    margin-top: 10vw;
+  }
+  .medway-section .player form input {
+    height: 10vw;
+    font-size: 3vw;
   }
 }
 
